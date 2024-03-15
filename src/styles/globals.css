@@ -1,0 +1,131 @@
+/* @import url("./fonts.css"); */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*  */
+
+@font-face {
+  font-family: "gilroy";
+  src: url("/fonts/gilroy-semibold.ttf");
+}
+@font-face {
+  font-family: "panton";
+  src: url("/fonts/PantonNarrow-Trial-Bold.ttf");
+}
+
+* {
+  font-family: gilroy;
+}
+
+.hero-p{
+  font-family: gilroy;
+}
+
+.hero-title{
+  font-family: panton;
+}
+
+.logo {
+  background: linear-gradient(to right, #ff4e50, #f9d423);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.logo:hover {
+  background: linear-gradient(to right, #ff4e50, #a1df70);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dhaka-bank {
+  background: linear-gradient(to right, #0b539d, #0b539d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.master-card {
+  background: linear-gradient(to right, #eb031b, #f79e1b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/*  */
+
+.brandPlaceholder::placeholder {
+  color: #6d6d6d;
+  font-size: smaller;
+}
+
+
+
+::-webkit-scrollbar {
+  width: 0.5vw;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #000000e8;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #fe9a609b;
+  border-radius: 1rem;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #fe9b60;
+}
+
+/*  */
+
+.brand-section {
+  background-image: url("https://assets.website-files.com/5837424ae11409586f837994/611b2d3c1a84f270060c9ec1_Texture.png"),
+    linear-gradient(#202020, #0f0f0f);
+}
+
+.largest-project {
+  background-image: url("https://assets.website-files.com/5837424ae11409586f837994/611b2d3c1a84f270060c9ec1_Texture.png"),
+    linear-gradient(#ff3b46, #ff3b46);
+}
+
+.eligibility-section {
+  background-image: url("https://assets.website-files.com/5837424ae11409586f837994/611b2d3c1a84f270060c9ec1_Texture.png"),
+    linear-gradient(#f0f0f0, #eeeeee);
+}
+
+.wishlist-section {
+  background-image: url("https://assets.website-files.com/5837424ae11409586f837994/611b2d3c1a84f270060c9ec1_Texture.png"),
+    linear-gradient(#ffc200, #ffc200);
+}
+
+.card-section {
+  background-image: url("https://assets.website-files.com/5837424ae11409586f837994/611b2d3c1a84f270060c9ec1_Texture.png"),
+    linear-gradient(#81b8fd, #81b8fd);
+}
+
+.second-section {
+  background-image: url("https://assets.website-files.com/5837424ae11409586f837994/611b2d3c1a84f270060c9ec1_Texture.png"),
+    linear-gradient(#fd7f3e, #fd7f3e);
+}
+
+.footer {
+  background-image: url("https://assets.website-files.com/5837424ae11409586f837994/611b2d3c1a84f270060c9ec1_Texture.png"),
+    linear-gradient(#202020, #0f0f0f);
+}
+
+.navbar {
+  background-color: #1a1a1a;
+}
+
+.hero-section {
+  /* background-image: url("https://assets.website-files.com/5837424ae11409586f837994/611b2d3c1a84f270060c9ec1_Texture.png"),
+    linear-gradient(#f0f0f0, #eeeeee); */
+  /* background-image: url("https://res.cloudinary.com/dy80ftu9k/image/upload/v1710430246/BOAST/WhatsApp_Image_2024-03-14_at_16.36.30_40be30a5_ifdjaa.png"); */
+  /* background-image: url("https://res.cloudinary.com/dy80ftu9k/image/upload/v1710430246/BOAST/WhatsApp_Image_2024-03-14_at_16.36.30_40be30a5_ifdjaa.png"); */
+}
+
+.how-does-it-work {
+  background-image: url("https://assets.website-files.com/5837424ae11409586f837994/611b2d3c1a84f270060c9ec1_Texture.png"),
+    linear-gradient(#b2e92e, #b2e92e);
+}

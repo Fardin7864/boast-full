@@ -1,0 +1,15 @@
+/* .newsLetterContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+  background-image: linear-gradient(#fff3f3e8, #fa9686a6);
+  background-color: #ffffff;
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+
+.placeholderWhite::placeholder {
+  color: rgb(59, 59, 59);
+}
