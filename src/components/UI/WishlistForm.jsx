@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+"use client"
 import { Button, Input, ModalHeader } from "@nextui-org/react";
 import style from "../../styles/WishlistForm.module.css";
 import {
@@ -11,6 +12,8 @@ import {
 import { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const WishlistForm = () => {
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
@@ -18,6 +21,19 @@ const WishlistForm = () => {
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
+  const [formData, setFormData] = useState({
+    name: "",
+    instagramId: "",
+    otherSocialMediaId: "",
+    phoneNo: "",
+    followers: "",
+  });
+
+  useEffect(() => {
+    AOS.init({
+      duration: 700,
+    });
+  }, []);
 
   const handleJoinNow = () => {
     onOpen();
@@ -25,20 +41,66 @@ const WishlistForm = () => {
 
   const handleClose = () => {
     onClose();
-    setEmail("");
+    resetFormData();
   };
-  const handleSubmit = (e) => {
+
+  const resetFormData = () => {
+    setFormData({
+      name: "",
+      instagramId: "",
+      otherSocialMediaId: "",
+      phoneNo: "",
+      followers: "",
+    });
+    setEmail("")
+
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmitEmail = (e) => {
     e.preventDefault();
     handleJoinNow();
   };
 
-  //
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  useEffect(() => {
-    AOS.init({
-      duration: 700,
-    });
-  }, []);
+    // handleClose(); // Close modal after form submission
+    const user = {
+      name: formData.name,
+      instagramId: formData.instagramId,
+      otherSocialMediaId: formData.otherSocialMediaId,
+      phoneNo: formData.phoneNo,
+      email: email,
+      followers: formData.followers,
+    }
+    const res = await axios.post("http://localhost:5000/api/v1/add-waitlist",user)
+    // console.log(res.data)
+    if(res.data.insertedId){
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: "Your on the waitlist now!",
+      });
+      handleClose()
+    }
+    else if(res.data.message === 'This email already registered'){
+      Swal.fire({
+        icon: "error",
+        title: "Ops..",
+        text: "This email already exist!",
+      });
+      handleClose();
+    }
+    // console.log("Form submitted with data:", user, "email:", email);
+  };
 
   return (
     <>
@@ -69,7 +131,7 @@ const WishlistForm = () => {
             <span className=" font-extrabold">Join</span> Early Access!
           </h2>
           <div className="my-3">
-            <form className="flex " onSubmit={handleSubmit}>
+            <form className="flex " onSubmit={handleSubmitEmail}>
               <input
                 type="email"
                 required
@@ -95,26 +157,31 @@ const WishlistForm = () => {
                     Join Our Wishlist
                   </ModalHeader>
                   <ModalBody className=" ">
-                    <form action="" className="">
+                    <form onSubmit={handleSubmit}>
                       <Input
-                        className="mb-5"
                         variant="underlined"
                         type="text"
                         label="Name"
-                        // placeholder="Enter your Name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
                       />
                       <div className="flex gap-5 mb-5">
                         <Input
                           variant="underlined"
                           type="text"
                           label="Instagram ID"
-                          // placeholder="Enter your Instagram ID"
+                          name="instagramId"
+                          value={formData.instagramId}
+                          onChange={handleInputChange}
                         />
                         <Input
                           variant="underlined"
                           type="text"
                           label="Other Social Media ID"
-                          // placeholder="Other Social Media ID"
+                          name="otherSocialMediaId"
+                          value={formData.otherSocialMediaId}
+                          onChange={handleInputChange}
                         />
                       </div>
                       <div className="flex gap-5 mb-5">
@@ -122,22 +189,32 @@ const WishlistForm = () => {
                           variant="underlined"
                           type="text"
                           label="Phone No."
-                          // placeholder="Enter your Phone No."
+                          name="phoneNo"
+                          value={formData.phoneNo}
+                          onChange={handleInputChange}
                         />
                         <Input
                           variant="underlined"
                           type="email"
                           label="Email"
-                          // placeholder="Enter your email"
+                          name="email"
                           value={email}
                         />
                       </div>
                       <Input
                         variant="underlined"
                         type="text"
-                        // label="Number of followers on Insta/FB/tiktok"
                         placeholder="Number of followers on Insta/FB/tiktok"
+                        name="followers"
+                        value={formData.followers}
+                        onChange={handleInputChange}
                       />
+                      <div className=" w-full flex flex-col justify-center items-center mt-5">
+                      <button 
+                      type="submit"
+                      className="bg-black hover:bg-[#DE3996] text-white px-6 py-2 rounded-full hover:text-black duration-300 "
+                      >Submit</button>
+                      </div>
                     </form>
                   </ModalBody>
                   <ModalFooter>
@@ -149,12 +226,6 @@ const WishlistForm = () => {
                     >
                       Cancel
                     </Button>
-                    <button
-                      onClick={handleClose}
-                      className="bg-black hover:bg-[#DE3996] text-white px-6 py-2 rounded-full hover:text-black duration-300 "
-                    >
-                      Join
-                    </button>
                   </ModalFooter>
                 </>
               )}
