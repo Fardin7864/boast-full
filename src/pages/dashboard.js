@@ -14,7 +14,7 @@ export default function Dashboard() {
   const [users, setUsers] = useState();
   useEffect(() => {
     const loader = async () => {
-      const result = await axios.get("http://localhost:5000/api/v1/witlist");
+      const result = await axios.get("https://boast-server.vercel.app/api/v1/witlist");
       console.log(result.data);
       setUsers(result.data);
     };

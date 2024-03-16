@@ -81,7 +81,7 @@ const WishlistForm = () => {
       email: email,
       followers: formData.followers,
     }
-    const res = await axios.post("http://localhost:5000/api/v1/add-waitlist",user)
+    const res = await axios.post("https://boast-server.vercel.app/api/v1/add-waitlist",user)
     // console.log(res.data)
     if(res.data.insertedId){
       Swal.fire({

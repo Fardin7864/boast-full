@@ -77,7 +77,7 @@ const BrandSection = () => {
     };
     // console.log(user)
     const res = await axios.post(
-      "http://localhost:5000/api/v1/add-waitlist",
+      "https://boast-server.vercel.app/api/v1/add-waitlist",
       user
     );
     // console.log(res.data)
