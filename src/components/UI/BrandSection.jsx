@@ -12,10 +12,19 @@ import {
 } from "@nextui-org/react";
 import { useState } from "react";
 import Marquee from "react-fast-marquee";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const BrandSection = () => {
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
   const [brand, setBrand] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    instagramId: "",
+    otherSocialMediaId: "",
+    phoneNo: "",
+    followers: "",
+  });
   const handleBrandChange = (e) => {
     setBrand(e.target.value);
   };
@@ -26,12 +35,70 @@ const BrandSection = () => {
 
   const handleClose = () => {
     onClose();
+    resetFormData();
+  };
+
+  const resetFormData = () => {
+    setFormData({
+      name: "",
+      instagramId: "",
+      otherSocialMediaId: "",
+      phoneNo: "",
+      followers: "",
+    });
     setBrand("");
   };
-  const handleSubmit = (e) => {
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmitBrand = (e) => {
     e.preventDefault();
     handleJoinNow();
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // handleClose(); // Close modal after form submission
+    const user = {
+      name: formData.name,
+      instagramId: formData.instagramId,
+      otherSocialMediaId: formData.otherSocialMediaId,
+      phoneNo: formData.phoneNo,
+      email: formData.email,
+      followers: formData.followers,
+      brand: brand,
+    };
+    // console.log(user)
+    const res = await axios.post(
+      "http://localhost:5000/api/v1/add-waitlist",
+      user
+    );
+    // console.log(res.data)
+    if (res.data.insertedId) {
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: "Achived early access now!",
+      });
+      handleClose();
+    } else if (res.data.message === "This email already registered") {
+      Swal.fire({
+        icon: "error",
+        title: "Ops..",
+        text: "This email already exist!",
+      });
+      handleClose();
+    }
+    // console.log("Form submitted with data:", user, "email:", email);
+  };
+
   return (
     <div className=" pb-14  brand-section">
       <div className="">
@@ -97,12 +164,12 @@ const BrandSection = () => {
       </h2>
 
       <div className=" flex justify-center mb-8 mt-2">
-        <form className="flex" onSubmit={handleSubmit}>
+        <form className="flex" onSubmit={handleSubmitBrand}>
           <input
             type="text"
             required
             placeholder="Name your favorite local brand"
-            className={`rounded-l-lg text-white  bg-white border border-none px-3 focus:outline-none brandPlaceholder w-64`}
+            className={`rounded-l-lg text-gray-700  bg-white border border-none px-3 focus:outline-none brandPlaceholder w-64`}
             onChange={handleBrandChange}
             value={brand}
           />
@@ -120,29 +187,35 @@ const BrandSection = () => {
           {(onClose) => (
             <>
               <ModalHeader className="bg-[#fd7f3e] text-white">
-                Name your favorite local brand
+                Join early access
               </ModalHeader>
               <ModalBody className=" ">
-                <form action="" className="">
+                <form onSubmit={handleSubmit}>
                   <Input
                     className="mb-5"
                     variant="underlined"
                     type="text"
                     label="Name"
-                    // placeholder="Enter your Name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
                   />
                   <div className="flex gap-5 mb-5">
                     <Input
                       variant="underlined"
                       type="text"
                       label="Instagram ID"
-                      // placeholder="Enter your Instagram ID"
+                      name="instagramId"
+                      value={formData.instagramId}
+                      onChange={handleInputChange}
                     />
                     <Input
                       variant="underlined"
                       type="text"
                       label="Other Social Media ID"
-                      // placeholder="Other Social Media ID"
+                      name="otherSocialMediaId"
+                      value={formData.otherSocialMediaId}
+                      onChange={handleInputChange}
                     />
                   </div>
                   <div className="flex gap-5 mb-5">
@@ -150,20 +223,26 @@ const BrandSection = () => {
                       variant="underlined"
                       type="text"
                       label="Phone No."
-                      // placeholder="Enter your Phone No."
+                      name="phoneNo"
+                      value={formData.phoneNo}
+                      onChange={handleInputChange}
                     />
                     <Input
                       variant="underlined"
                       type="email"
                       label="Email"
-                      // placeholder="Enter your email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
                     />
                   </div>
                   <Input
                     variant="underlined"
                     className="mb-5"
                     type="text"
-                    // label="Number of followers on Insta/FB/tiktok"
+                    name="followers"
+                    value={formData.followers}
+                    onChange={handleInputChange}
                     placeholder="Number of followers on Insta/FB/tiktok"
                   />
                   <Input
@@ -173,6 +252,14 @@ const BrandSection = () => {
                     placeholder="Name your favourite local brand"
                     value={brand}
                   />
+                  <div className=" w-full flex flex-col justify-center items-center mt-5">
+                    <button
+                      type="submit"
+                      className="bg-black hover:bg-[#DE3996] text-white px-6 py-2 rounded-full hover:text-black duration-300 "
+                    >
+                      Submit
+                    </button>
+                  </div>
                 </form>
               </ModalBody>
               <ModalFooter>
@@ -184,12 +271,6 @@ const BrandSection = () => {
                 >
                   Cancel
                 </Button>
-                <button
-                  onClick={handleClose}
-                  className="bg-black hover:bg-[#DE3996] text-white px-6 py-2 rounded-full hover:text-black duration-300 "
-                >
-                  Join
-                </button>
               </ModalFooter>
             </>
           )}
@@ -200,31 +281,3 @@ const BrandSection = () => {
 };
 
 export default BrandSection;
-
-//
-
-// function SampleNextArrow(props) {
-//   const { className, style, onClick } = props;
-//   return (
-//     <div
-//       className={className}
-//       style={{ ...style, display: "block", background: "gray" }}
-//       onClick={onClick}
-//     />
-//   );
-// }
-
-// function SamplePrevArrow(props) {
-//   const { className, style, onClick } = props;
-//   return (
-//     <div
-//       className={className}
-//       style={{
-//         ...style,
-//         display: "block",
-//         background: "gray",
-//       }}
-//       onClick={onClick}
-//     />
-//   );
-// }
