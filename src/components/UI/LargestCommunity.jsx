@@ -10,7 +10,7 @@ const LargestCommunity = () => {
     });
   }, []);
   return (
-    <div className="flex flex-col lg:flex-row gap-10 lg:gap-20 justify-between items-center px-10 lg:px-28 py-10 lg:py-20 w-full largest-project">
+    <div className="flex flex-col lg:flex-row gap-10 lg:gap-20 justify-between items-center px-10 lg:px-28 py-10 lg:py-20 w-full largest-project overflow-hidden">
       <div className="" data-aos="fade-right" data-aos-easing="ease-in-sine">
         <h2
           className="text-3xl md:text-4xl lg:text-6xl mb:2 lg:mb-4 font-extrabold text-white"

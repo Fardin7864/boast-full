@@ -17,7 +17,7 @@ const HowDoesItWork = () => {
     <div>
       <div
         // style={{ backgroundColor: "#b2e92e" }}
-        className="flex flex-col lg:flex-row justify-between items-center py-10 lg:py-20 pl-5 md:pl-10 lg:pl-28 how-does-it-work"
+        className="flex flex-col lg:flex-row justify-between items-center py-10 lg:py-20 pl-5 md:pl-10 lg:pl-28 how-does-it-work overflow-hidden"
       >
         <div className="w-full lg:w-2/4">
           <h2
