@@ -9,58 +9,71 @@ const HeroSection = () => {
   };
 
   return (
-    <div className=" overflow-hidden">
-      <div className="flex justify-center items-center overflow-hidden pt-5 mt-16 hero-section h-[95vh]">
+    <div className="overflow-hidden ">
+      <div className="flex justify-center items-center pt-5 mt-5 lg:mt-16 hero-section h-auto lg:h-[95vh] overflow-hidden">
         <div style={{ zIndex: 100 }} className=" absolute top-0 w-full left-0">
           <Navbar />
         </div>
 
         {/* yellow section */}
-        <div className=" absolute -left-[30rem] z-0">
+        <div className=" absolute -left-[160px] bottom-[60px] lg:-left-[30rem] z-0">
           <Image
             src={"/hero/yellowbg.png"}
+            className="w-[350px] lg:w-[1100px]"
             width={1100}
             height={0}
+            // layout="fill"
             alt="yellow"
           />
         </div>
         {/* pink section */}
         <div
           style={{ zIndex: 0 }}
-          className=" absolute -right-24 -top-[32rem] z-0 "
+          className=" absolute  lg:-right-24  lg:-top-[32rem] z-0 "
         >
-          <Image src={"/hero/pinkbg.png"} width={1100} height={0} alt="pink" />
+          <Image
+            src={"/hero/pinkbg.png"}
+            className="w-[300px] lg:w-[1100px]"
+            width={1100}
+            height={0}
+            alt="pink"
+          />
         </div>
         {/* line 1 */}
-        <div className=" absolute -top-10 -left-40 z-0">
+        <div className=" absolute lg:-top-10 lg:-left-40 z-0">
           <Image
-          src={"/hero/line1.png"}
-          width={600}
-          height={0}
-          alt="line 1"
+            src={"/hero/line1.png"}
+            className="w-[200px] lg:w-[600px]"
+            width={600}
+            height={0}
+            alt="line 1"
           />
         </div>
         {/* line 2 */}
-        <div className=" absolute -top-36 -right-16">
+        <div className=" absolute lg:-top-40 lg:left-[360px]">
           <Image
-          src={"/hero/line2.png"}
-          width={900}
-          height={0}
-          alt="line2 "
+            src={"/hero/line2.png"}
+            className="w-[300px] lg:w-[900px]"
+            width={900}
+            height={0}
+            alt="line2 "
           />
         </div>
 
         {/* Text and diloags */}
-        <div className=" z-10 mt-36 ml-48 w-3/6">
+        <div className=" z-10 mt-36 ml-10 lg:ml-48 w-3/6">
           <h2
-            className="text-6xl font-extrabold hero-title"
-            style={{ letterSpacing: "-4px" }}
+            className="text-2xl lg:text-6xl font-extrabold hero-title"
+            style={{ letterSpacing: "-2px" }}
           >
             Upto 100 <span className="hero-p">%</span> cashback <br />
             <span className="text-black hero-title">
               {" "}
               on your
-              <span style={{ position: "relative", display: "inline-block" }} className=" ml-5">
+              <span
+                style={{ position: "relative", display: "inline-block" }}
+                className=" ml-5"
+              >
                 <span
                   style={{
                     position: "absolute",
@@ -69,7 +82,7 @@ const HeroSection = () => {
                     right: 0,
                     backgroundColor: "#fe5727",
                     height: "50%",
-                    borderRadius: '6px',
+                    borderRadius: "6px",
                     zIndex: -1,
                   }}
                 ></span>
@@ -98,10 +111,11 @@ const HeroSection = () => {
           </button>
         </div>
 
-        {/* main Cha */} 
-        <div className=" relative top-10 left-[40px]">
+        {/* main Cha */}
+        <div className=" relative top-10 left-0 lg:left-[50px]">
           <Image
             src={"/hero/boastC.png"}
+            className="w-[150px] lg:w-[500px]"
             width={500}
             height={0}
             alt="main carecter"

@@ -10,27 +10,31 @@ const EligibilitySection = () => {
       duration: 700,
     });
   }, []);
+
+  //
+
   const handleScrollToWishlist = () => {
     const wishlistSection = document.getElementById("wishlistForm");
     wishlistSection.scrollIntoView({ behavior: "smooth" });
   };
+
   return (
-    <div className="justify-between flex flex-col lg:flex-row gap-20 lg:gap-0 items-center px-28 py-20 w-full eligibility-section">
+    <div className="justify-between flex flex-col lg:flex-row gap-2 lg:gap-0 items-center px-10 lg:px-28 py-10 lg:py-20 w-full eligibility-section">
       <div data-aos="fade-right" data-aos-easing="ease-in-sine">
         <h2
-          className="text-6xl mb-4 font-extrabold"
-          style={{ letterSpacing: "-4px" }}
+          className="text-3xl md:text-4xl lg:text-6xl mb-4 font-extrabold"
+          style={{ letterSpacing: "-2px" }}
         >
           Eligibility
         </h2>
-        <div className="my-10">
+        <div className="my-5 lg:my-10">
           <h5 className="flex items-center gap-3 font-bold pb-3 text-xl text-[#fd7f3e]">
             <span>
               <FaStar />
             </span>
             1000 followers on any social media platform.
           </h5>
-          <h5 className="ml-5">
+          <h5 className="ml-7">
             ( If you have this you can apply for our Membership. <br /> But the
             more followers the better you encash.)
           </h5>

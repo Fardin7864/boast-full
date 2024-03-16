@@ -8,7 +8,7 @@ const Navbar = () => {
   };
   return (
     <div className=" drop-shadow-lg navbar z-10">
-      <div className="flex justify-between items-center mx-24 py-2">
+      <div className="flex justify-between items-center mx-2 lg:mx-24 py-2">
         <Image
           src={
             "https://res.cloudinary.com/dy80ftu9k/image/upload/v1710427159/BOAST/1212_p9r7vr.webp"
