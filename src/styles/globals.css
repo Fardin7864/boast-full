@@ -20,11 +20,11 @@
   font-family: gilroy;
 }
 
-.hero-p{
+.hero-p {
   font-family: gilroy;
 }
 
-.hero-title{
+.hero-title {
   font-family: panton;
 }
 
@@ -56,8 +56,6 @@
   color: #6d6d6d;
   font-size: smaller;
 }
-
-
 
 ::-webkit-scrollbar {
   width: 0.5vw;
@@ -123,6 +121,8 @@
     linear-gradient(#f0f0f0, #eeeeee); */
   /* background-image: url("https://res.cloudinary.com/dy80ftu9k/image/upload/v1710430246/BOAST/WhatsApp_Image_2024-03-14_at_16.36.30_40be30a5_ifdjaa.png"); */
   /* background-image: url("https://res.cloudinary.com/dy80ftu9k/image/upload/v1710430246/BOAST/WhatsApp_Image_2024-03-14_at_16.36.30_40be30a5_ifdjaa.png"); */
+
+  /* background-image: url("/images/screen.png"); */
 }
 
 .how-does-it-work {

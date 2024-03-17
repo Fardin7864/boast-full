@@ -106,12 +106,13 @@ const WishlistForm = () => {
     <>
       <div
         id="wishlistForm"
-        className="flex flex-col lg:flex-row gap-20 lg:gap-0 justify-between items-center px-28 pt-20 wishlist-section"
+        className="flex flex-col-reverse lg:flex-row gap-10 md:gap-20 lg:gap-0 justify-between items-center px-10 lg:px-28 pt-10 lg:pt-20 wishlist-section overflow-hidden"
       >
         <img
           data-aos="fade-right"
           data-aos-easing="ease-in-sine"
-          style={{ width: "663px", height: "549px" }}
+          className="w-[663px] "
+          // style={{ width: "663px", height: "549px" }}
           src="https://res.cloudinary.com/dy80ftu9k/image/upload/v1710427161/BOAST/Screenshot-2023-03-08-at-12.50.37-AM-1024x848_iitlok.png"
           alt=""
         />
@@ -119,16 +120,16 @@ const WishlistForm = () => {
         <div
           data-aos="fade-left"
           data-aos-easing="ease-in-sine"
-          className="mr-24 flex flex-col items-center justify-center"
+          className="mr-0 lg:mr-24 flex flex-col items-center justify-center"
         >
-          <h1 className=" text-white text-2xl mb-2 font-bold -ml-3">
+          <h1 className=" text-white text-center lg:text-start text-xl lg:text-2xl mb-2 font-bold ml:0 lg:-ml-3">
             Want to be an early adaptor?
           </h1>
           <h2
-            className="text-5xl mb-2 hero-title font-extrabold"
+            className="text-3xl md:text-4xl lg:text-5xl mb-2 hero-title font-extrabold"
             style={{ letterSpacing: "-2px" }}
           >
-            <span className=" font-extrabold">Join</span> Early Access!
+            <span className=" font-extrabold">Join Early Access!</span>
           </h2>
           <div className="my-3">
             <form className="flex " onSubmit={handleSubmitEmail}>

@@ -12,11 +12,11 @@ const ThirdSection = () => {
   }, []);
   return (
     <div className=" -mt-5">
-      <div className=" flex flex-col items-center justify-center pb-20 card-section">
+      <div className="flex flex-col items-center justify-center pb-14 lg:pb-20 card-section">
         <div data-aos="fade-down">
           <img
-            className="block mx-auto "
-            style={{ width: "500px" }}
+            className="block mx-auto w-[300px] lg:w-[500px]"
+            // style={{ width: "500px" }}
             src="https://res.cloudinary.com/dy80ftu9k/image/upload/v1710434063/BOAST/6_o2qasw.png"
             alt=""
           />
@@ -33,10 +33,7 @@ const ThirdSection = () => {
           whileHover={{ scale: 1.2 }}
           className="text-center mr-20"
         >
-          <span
-            className="text-white text-4xl font-bold text-center"
-            style={{ letterSpacing: "-2px" }}
-          >
+          <span className="text-white text-2xl md:text-3xl lg:text-4xl font-bold text-center">
             Every Member gets a Prepaid card powered by <br />
             <span className="dhaka-bank text-center">Dhaka Bank</span> and
             <span className=" text-[#eb031b] "> Master </span>
